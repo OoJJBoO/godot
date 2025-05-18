@@ -513,7 +513,7 @@ void JoltArea3D::set_monitorable(bool p_monitorable) {
 }
 
 bool JoltArea3D::can_monitor(const JoltBody3D &p_other) const {
-	return (collision_mask & p_other.get_collision_layer()) != 0;
+	return (collision_mask & p_other.get_collision_layer()) && has_body_monitor_callback() != 0;
 }
 
 bool JoltArea3D::can_monitor(const JoltSoftBody3D &p_other) const {
@@ -521,7 +521,7 @@ bool JoltArea3D::can_monitor(const JoltSoftBody3D &p_other) const {
 }
 
 bool JoltArea3D::can_monitor(const JoltArea3D &p_other) const {
-	return p_other.is_monitorable() && (collision_mask & p_other.get_collision_layer()) != 0;
+	return p_other.is_monitorable() && (collision_mask & p_other.get_collision_layer()) && (has_area_monitor_callback() || p_other.has_area_monitor_callback()) != 0;
 }
 
 bool JoltArea3D::can_interact_with(const JoltBody3D &p_other) const {
