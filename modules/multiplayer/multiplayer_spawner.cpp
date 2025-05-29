@@ -133,6 +133,11 @@ void MultiplayerSpawner::clear_spawnable_scenes() {
 	}
 }
 
+void MultiplayerSpawner::set_multiplayer_authority(int p_peer_id, bool p_recursive) {
+	WARN_PRINT("Changing the multiplayer authority of a MultiplayerSpawner is currently not fully supported and may lead to undesired results.");
+	Node::set_multiplayer_authority(p_peer_id, p_recursive);
+}
+
 Vector<String> MultiplayerSpawner::_get_spawnable_scenes() const {
 	Vector<String> ss;
 	ss.resize(spawnable_scenes.size());

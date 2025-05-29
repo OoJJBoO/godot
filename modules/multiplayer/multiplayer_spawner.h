@@ -99,6 +99,8 @@ public:
 	String get_spawnable_scene(int p_idx) const;
 	void clear_spawnable_scenes();
 
+	virtual void set_multiplayer_authority(int p_peer_id, bool p_recursive = true) override;
+
 	NodePath get_spawn_path() const;
 	void set_spawn_path(const NodePath &p_path);
 	uint32_t get_spawn_limit() const { return spawn_limit; }
